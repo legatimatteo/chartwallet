@@ -1,0 +1,84 @@
+<mvc:View
+  controllerName="chartwallet.controller.Subscribe"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:mvc="sap.ui.core.mvc"
+>
+
+<Page id="Login" showHeader="true" showFooter="true">
+  <VBox
+      height="100%"
+      fitContainer="true"
+      justifyContent="Center"
+      class="loginForm"
+    >
+    <l:BlockLayout background="Dashboard">
+ 			<l:BlockLayoutRow>
+				<l:BlockLayoutCell title="{i18n>subscribeFormTitle}">
+				  <f:Form id="subscribeForm" editable="true">
+						<f:layout>
+							<f:ResponsiveGridLayout
+                  labelSpanXL="12"
+                  labelSpanL="12"
+                  labelSpanM="12"
+                  labelSpanS="12"
+                  adjustLabelSpan="false"
+                  emptySpanXL="0"
+                  emptySpanL="0"
+                  emptySpanM="0"
+                  emptySpanS="0"
+                  columnsXL="12"
+                  columnsL="12"
+                  columnsM="12"
+                  columnsS="12"
+                  singleContainerFullSize="false"
+                />
+						</f:layout>
+						<f:formContainers>
+							<f:FormContainer>
+    						<f:formElements>
+   								<f:FormElement label="{i18n>subscribeFormEmailField}">
+    									<f:fields>
+   										<Input id="loginEmailField" placeholder="example@domain.com" />
+    									</f:fields>
+   								</f:FormElement>
+                  <f:FormElement label="{i18n>subscribeFormPasswdField}">
+    									<f:fields>
+   										<Input id="loginPasswdField" type="Password" />
+    									</f:fields>
+   								</f:FormElement>
+                  <f:FormElement>
+                    <HBox
+                        width="100%"
+                        justifyContent="SpaceBetween"
+                        alignItems="Center"
+                      >
+                      <Link
+                          href="#/login"
+                          text="{i18n>subscribeFormSubscribeLink}"
+                        />
+                      <Button
+                          type="Submit"
+                          text="{i18n>subscribeFormLoginBtn}"
+                        />
+                    </HBox>
+                  </f:FormElement>
+          			</f:formElements>
+              </f:FormContainer>
+            </f:formContainers>
+          </f:Form>
+				</l:BlockLayoutCell>
+ 			</l:BlockLayoutRow>
+    </l:BlockLayout>
+  </VBox>
+
+  <footer>
+    <OverflowToolbar>
+
+    </OverflowToolbar>
+  </footer>
+</Page>
+
+</mvc:View>

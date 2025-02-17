@@ -1,81 +1,99 @@
 {
-	"_version": "1.12.0",
+  "_version": "1.12.0",
 
-	"sap.app": {
-		"id": "chartwallet",
-		"type": "application",
-		"i18n": "i18n/i18n.properties",
-		"title": "{{appTitle}}",
-		"description": "{{appDescription}}",
-		"applicationVersion": {
-			"version": "${version}"
-		}
-	},
+  "sap.app": {
+    "id": "chartwallet",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "applicationVersion": {
+      "version": "${version}"
+    }
+  },
 
-	"sap.ui": {
-		"technology": "UI5",
-		"icons": {},
-		"deviceTypes": {
-			"desktop": true,
-			"tablet": true,
-			"phone": true
-		}
-	},
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {},
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
 
-	"sap.ui5": {
-		"rootView": {
-			"viewName": "chartwallet.view.App",
-			"type": "XML",
-			"async": true,
-			"id": "app"
-		},
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "chartwallet.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "app"
+    },
 
-		"dependencies": {
-			"minUI5Version": "1.132.1",
-			"libs": {
-				"sap.ui.core": {},
-				"sap.m": {}
-			}
-		},
+    "dependencies": {
+      "minUI5Version": "1.132.1",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {}
+      }
+    },
 
-		"handleValidation": true,
+    "handleValidation": true,
 
-		"contentDensities": {
-			"compact": true,
-			"cozy": true
-		},
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
 
-		"models": {
-			"i18n": {
-				"type": "sap.ui.model.resource.ResourceModel",
-				"settings": {
-					"bundleName": "chartwallet.i18n.i18n"
-				}
-			}
-		},
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "chartwallet.i18n.i18n"
+        }
+      }
+    },
 
-		"routing": {
-			"config": {
-				"routerClass": "sap.m.routing.Router",
-				"viewType": "XML",
-				"viewPath": "chartwallet.view",
-				"controlId": "app",
-				"controlAggregation": "pages",
-				"async": true
-			},
-			"routes": [
-				{
-					"pattern": "",
-					"name": "main",
-					"target": "main"
-				}
-			],
-			"targets": {
-				"main": {
-					"viewId": "main",
-					"viewName": "Main"
-				}
-			}
-		}
-	}
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "viewPath": "chartwallet.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "home",
+          "target": "main"
+        },
+        {
+          "pattern": "login",
+          "name": "login",
+          "target": "login"
+        },
+        {
+          "pattern": "subscribe",
+          "name": "subscribe",
+          "target": "subscribe"
+        }
+      ],
+      "targets": {
+        "main": {
+          "viewId": "main",
+          "viewName": "Main"
+        },
+        "login": {
+          "viewId": "login",
+          "viewName": "Login"
+        },
+        "subscribe": {
+          "viewId": "subscribe",
+          "viewName": "Subscribe"
+        }
+      }
+    }
+  }
 }
