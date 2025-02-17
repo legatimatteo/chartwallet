@@ -1,17 +1,68 @@
-# build results
-dist
-coverage
+# Ignore .gitignore, target, dist and tmp folders
+lib/jsdoc/target
+src/*/.gitignore
+src/*/target/
+src/*/dist/
+src/*/coverage/
+src/*/surefire-reports/
+/target
+/tmp
 
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Ignore default target directory for the npm package 'ui5-codecompletion'
+.ui5
 
-# Dependency directories
-node_modules/
+# Ignore Eclipse project and settings files
+.classpath
+.settings
+.project
+.externalToolBuilders
 
+# Ignore IntelliJ project and settings files
+.idea
+*.iml
+
+# Ignore temp folders
+grunt/bin
+
+# Ignore npm files/folders
+node_modules
+npm-debug.log
+src/**/package-lock.json
+
+# Ignore bower folder
+bower_components
+
+# Ignore Mac files
 .DS_Store
-.env
-tmp/
+
+# Ignore Visual Studio project and settings files
+*.sln
+*.suo
+web.config
+/.user.project.json
+/sap-ui-cachebuster-info.json
+
+# Ignore Visual Studio Code project and settings files
+.vscode/
+
+# Ignore yarn files
+yarn-error.log*
+yarn-debug.log*
+.yarn-integrity
+
+# Ignore documentation artifacts
+src/testsuite/src/main/webapp/docs/
+src/testsuite/src/main/webapp/documentation-config.js
+src/testsuite/src/main/webapp/searchindex.json
+src/sap.ui.documentation/src/sap/ui/documentation/sdk/model/data/guide/
+
+# Ignore default target directory for the npm package 'ui5-schemas'
+.tmp
+
+# Ignore REUSE summary file
+.reuse/spdx.txt
+.reuse/dep5_test
+.reuse/THIRDPARTY_test.txt
+
+# Ignore eslint cache file
+.eslintcache
