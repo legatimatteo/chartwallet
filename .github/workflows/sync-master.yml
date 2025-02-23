@@ -12,8 +12,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Push to Public Repo
+      - name: Set up Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add remote for public repo
         run: |
           git remote add public https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/legatimatteo/chartwallet.git
-          git remote -v
+
+      - name: Push to Public Repo
+        run: |
+          git fetch public
+          git push -f public master
+
+      - name: Push to Public Repo
+        run: |
+          git fetch public
           git push -f public master
