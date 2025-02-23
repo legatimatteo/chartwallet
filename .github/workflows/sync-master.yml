@@ -15,5 +15,5 @@ jobs:
       - name: Push to Public Repo
         run: |
           git remote -v
-          git remote set-url public https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/legatimatteo/chartwallet.git
+          git remote add public https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/legatimatteo/chartwallet.git
           git push -f public master
