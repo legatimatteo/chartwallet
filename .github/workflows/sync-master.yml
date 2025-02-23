@@ -1,0 +1,21 @@
+name: Sync Master to Public Repo
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Push to Public Repo
+        run: |
+          git remote add public https://x-access-token:${{ secrets.PUSH_TOKEN }}@github.com/tuo-utente/chartwallet.git
+          git push -f public master
+
+    env:
+      PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
