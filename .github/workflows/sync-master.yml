@@ -11,22 +11,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
 
       - name: Set up Git
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Add remote for public repo
-        run: |
-          git remote add public https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/legatimatteo/chartwallet.git
-
       - name: Push to Public Repo
+        env:
+          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
         run: |
-          git fetch public
-          git push -f public master
-
-      - name: Push to Public Repo
-        run: |
-          git fetch public
-          git push -f public master
+          git remote add public https://github.com/legatimatteo/chartwallet.git
+          git remote set-url public "https://${SYNC_TOKEN}@github.com/legatimatteo/chartwallet.git"
+          git push -f public master:master
