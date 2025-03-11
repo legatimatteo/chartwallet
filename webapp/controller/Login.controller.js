@@ -28,10 +28,13 @@ sap.ui.define(
 				const oData = {};
 				const sUrl = "user/1";
 
-				apiCall.callApi(oData, sUrl).then(() => {
-					this.getOwnerComponent().setIsLogged(true);
-					console.log("Successfully logged in");
-				});
+				// apiCall.callApi(oData, sUrl).then(() => {
+				// 	this.getOwnerComponent().setIsLogged(true);
+				// 	console.log("Successfully logged in");
+				// });
+
+				this.getOwnerComponent().setIsLogged(true);
+				this.navTo("home");
 			},
 		});
 	},

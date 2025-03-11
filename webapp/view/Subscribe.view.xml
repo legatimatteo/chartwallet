@@ -7,7 +7,7 @@
   xmlns:mvc="sap.ui.core.mvc"
 >
 
-<Page id="Login" showHeader="true" showFooter="true">
+<Page id="Login" showHeader="false" showFooter="false">
   <VBox
       height="100%"
       fitContainer="true"

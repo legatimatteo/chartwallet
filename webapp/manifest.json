@@ -27,7 +27,7 @@
       "viewName": "chartwallet.view.App",
       "type": "XML",
       "async": true,
-      "id": "app"
+      "id": "mainContents"
     },
 
     "dependencies": {
@@ -49,9 +49,14 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "chartwallet.i18n.i18n"
+          "bundleName": "chartwallet.i18n.i18n",
+          "async": true
         }
-      }
+      },
+      "side": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/sideContent.json"
+			}
     },
 
     "routing": {
@@ -59,7 +64,7 @@
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "viewPath": "chartwallet.view",
-        "controlId": "app",
+        "controlId": "mainContents",
         "controlAggregation": "pages",
         "async": true
       },
