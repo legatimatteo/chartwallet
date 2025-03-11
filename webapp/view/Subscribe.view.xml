@@ -41,12 +41,26 @@
     						<f:formElements>
    								<f:FormElement label="{i18n>subscribeFormEmailField}">
     									<f:fields>
-   										<Input id="loginEmailField" placeholder="example@domain.com" />
+   										<Input
+                          id="subscribeEmailField"
+                          placeholder="example@domain.com"
+                          required="true"
+                        />
+    									</f:fields>
+   								</f:FormElement>
+                  <f:FormElement label="{i18n>subscribeNameField}">
+    									<f:fields>
+   										<Input id="subscribeNameField" placeholder="Mario" required="true" />
+    									</f:fields>
+   								</f:FormElement>
+                  <f:FormElement label="{i18n>subscribeSurnameField}">
+    									<f:fields>
+   										<Input id="subscribeSurnameField" placeholder="Rossi" />
     									</f:fields>
    								</f:FormElement>
                   <f:FormElement label="{i18n>subscribeFormPasswdField}">
     									<f:fields>
-   										<Input id="loginPasswdField" type="Password" />
+   										<Input id="subscribePasswdField" type="Password" required="true" />
     									</f:fields>
    								</f:FormElement>
                   <f:FormElement>

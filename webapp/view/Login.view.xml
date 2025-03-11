@@ -59,7 +59,11 @@
                           href="#/subscribe"
                           text="{i18n>loginFormSubscribeLink}"
                         />
-                      <Button type="Submit" text="{i18n>loginFormLoginBtn}" />
+                      <Button
+                          press=".onLoginPress"
+                          type="Submit"
+                          text="{i18n>loginFormLoginBtn}"
+                        />
                     </HBox>
                   </f:FormElement>
           			</f:formElements>
