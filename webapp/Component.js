@@ -1,6 +1,6 @@
 sap.ui.define(
-	["sap/ui/core/UIComponent", "sap/ui/Device", "./model/models"],
-	function (UIComponent, Device, models) {
+	["sap/ui/core/UIComponent", "sap/ui/Device", "./model/models", "sap/ui/util/Storage"],
+	function (UIComponent, Device, models, Storage) {
 		"use strict";
 
 		return UIComponent.extend("chartwallet.Component", {
@@ -44,12 +44,50 @@ sap.ui.define(
 				}
 				return this.contentDensityClass;
 			},
-			getIsLogged: function () {
+			/**
+			 * Check for server reachability
+			 * @returns boolean true if the server is reachable
+			 */
+			checkServerReachability: function () {
+				const sUrl = "/i3s/status";
+
+				return new Promise((resolve) => {
+					$.ajax({
+						type: "GET",
+						url: sUrl,
+						async: true,
+						success: function (resp) {
+							console.log("Server is reachable");
+							resolve(true);
+						},
+						error: function (jqXHR, comment, error) {
+							console.log(error + ": " + comment);
+							resolve(false);
+						},
+					});
+				});
+			},
+			/**
+			 * Set the login status
+			 * @param {*} token 
+			 */
+			_setToken(token) {
+				Storage.put("token", token);
+				this._isLogged = true;
+			},
+			/**
+			 * Get the login status
+			 */
+			_getToken() {
+				return Storage.get("token");
+			},
+			/**
+			 * Set the login status
+			 * @param {*} status 
+			 */
+			getIsLogged() {
 				return this._isLogged;
-			},
-			setIsLogged: function (b) {
-				this._isLogged = b;
-			},
+			}
 		});
 	},
 );

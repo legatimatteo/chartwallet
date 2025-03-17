@@ -20,12 +20,8 @@ server:
       afterMiddleware: compression
     - name: ui5-middleware-livereload
       afterMiddleware: compression
-    - name: fiori-tools-proxy
+    - name: ui5-middleware-simpleproxy
       afterMiddleware: compression
+      mountPath: /i3s
       configuration:
-        backend:
-          - path: /i3s
-            url: http://192.168.178.128:8080
-          - path: /test
-            pathReplace: ""
-            url: http://localhost:8080
+        baseUri: http://192.168.178.128:8488

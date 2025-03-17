@@ -1,12 +1,27 @@
-sap.ui.define(["./BaseController"], function (BaseController) {
+sap.ui.define([
+	"./BaseController",
+	"sap/m/MessageBox"
+], function (
+	BaseController,
+	MessageBox
+) {
 	"use strict";
 
 	return BaseController.extend("chartwallet.controller.App", {
 		onInit: function () {
+			const that = this;
 			// apply content density mode to root view
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 			// Check for login before continuing
 			this.getRouter().getRoute("home").attachPatternMatched(this._checkLoggedIn, this);
+			// Check if the server is reachable
+			this.getOwnerComponent().checkServerReachability().then((bServerReachable) => {
+				if (!bServerReachable) {
+					that.showBusyIndicator().then(() => {;
+						MessageBox.error(that.getBundleText("serverNotReachable"));
+					});
+				}
+			});
 		},
 		/**
 		 * Returns a promise which resolves with the resource bundle value of the given key <code>sI18nKey</code>

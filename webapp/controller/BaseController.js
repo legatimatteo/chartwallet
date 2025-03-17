@@ -3,8 +3,9 @@ sap.ui.define(
 		"sap/ui/core/mvc/Controller",
 		"sap/ui/core/UIComponent",
 		"sap/ui/core/routing/History",
+		"sap/ui/core/BusyIndicator",
 	],
-	function (Controller, UIComponent, History) {
+	function (Controller, UIComponent, History, BusyIndicator) {
 		"use strict";
 
 		return Controller.extend("chartwallet.controller.BaseController", {
@@ -100,7 +101,26 @@ sap.ui.define(
 				if (! this.getOwnerComponent().getIsLogged()) {
 					this.navTo("login");
 				}
-			}
+			},
+			hideBusyIndicator : function() {
+				BusyIndicator.hide();
+			},
+	
+			showBusyIndicator : async function (iDelay, iDuration) {
+				BusyIndicator.show(iDelay);
+	
+				if (iDuration && iDuration > 0) {
+					if (this._sTimeoutId) {
+						clearTimeout(this._sTimeoutId);
+						this._sTimeoutId = null;
+					}
+	
+					this._sTimeoutId = setTimeout(function() {
+						this.hideBusyIndicator();
+					}.bind(this), iDuration);
+				}
+			},
+	
 
 		});
 	},

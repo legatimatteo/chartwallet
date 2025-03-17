@@ -1,27 +1,31 @@
 sap.ui.define([], function () {
 	"use strict";
-	const _path = "/test/api/chartwallet/";
+	const _path = "/i3s/";
 
 	return {
-		callApi: async function (oData, sUrl) {
+		callApi: function (oData, sUrl) {
 			const sFullUrl = `${_path}${sUrl}`;
 			console.log("Chiamando URL:", sFullUrl);
-			const _retData = $.ajax({
-				type: "GET",
-				url: sFullUrl,
-				headers: {
-					"API-KEY":
-						"YvUSSAmGPSKMUEKS2iIeOVgq7qRD5Lie2Rpa6EGMsAyC4oklv199BDjo4fvc8IqY",
-				},
-				success: function (resp) {
-					console.log(resp);
-				},
-				error: function (jqXHR, comment, error) {
-					console.log(error + ":" + " " + comment);
-				},
+			return new Promise ((resolve, reject) => {
+				$.ajax({
+					type: "POST",
+					url: sFullUrl,
+					dataType: "json",
+            		contentType: "application/json",
+					data: JSON.stringify(oData),
+					success: function (resp) {
+						console.log(resp);
+						resolve(resp);
+					},
+					error: function (comment, error) {
+						console.log(error + ":" + " " + comment);
+						reject(error);
+					},
+				});
 			});
-
-			return _retData;
 		},
+		askToLogin: function (oData, sUrl = "auth/login") {
+			return this.callApi(oData, sUrl);
+		}
 	};
 });
