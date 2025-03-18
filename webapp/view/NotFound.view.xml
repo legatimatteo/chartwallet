@@ -1,0 +1,35 @@
+<mvc:View
+    controllerName="chartwallet.controller.NotFound"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    displayBlock="true">
+    <Page
+        id="page"
+        title="Pagina non trovata"
+        showNavButton="{device>/system/phone}"
+        navButtonPress=".onNavBack">
+        <content>
+            <FlexBox
+                alignItems="Center"
+                justifyContent="Center"
+                direction="Column"
+                height="100%">
+                <IllustratedMessage
+                    title="{i18n>pageNotFoundTitle}"
+                    illustrationType="sapIllus-PageNotFound"
+                    enableVerticalResponsiveness="true"
+                    description="{i18n>pageNotFoundDescription}">
+                    <additionalContent>
+                        <Button
+                        text="Torna alla pagina iniziale"
+                        press=".onNavBack"
+                        type="Emphasized"
+                        class="sapUiMediumMarginBottom"/>
+                    </additionalContent>
+
+			    </IllustratedMessage>
+                
+            </FlexBox>
+        </content>
+    </Page>
+</mvc:View>

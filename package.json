@@ -1,15 +1,15 @@
 {
 	"name": "chartwallet",
 	"version": "1.0.0",
-	"description": "UI5 Application: chartwallet",
+	"description": "Chartwallet",
 	"author": "Legati Matteo",
 	"license": "Apache-2.0",
 	"scripts": {
 		"clean": "rimraf dist coverage",
 		"build": "ui5 build --clean-dest",
 		"build:opt": "ui5 build self-contained --clean-dest --all",
-		"start": "ui5 serve --port 8080 -o index.html",
-		"start-cdn": "ui5 serve --port 8080 -o index-cdn.html",
+		"start": "ui5 serve --port 8081 --config ui5.yaml",
+		"start-cdn": "ui5 serve --port 8081 -o index-cdn.html",
 		"start:dist": "npm start -- --config ui5-dist.yaml",
 		"start:dist-cdn": "npm run start-cdn -- --config ui5-dist.yaml",
 		"lint": "eslint webapp",
@@ -20,6 +20,7 @@
 		"wdi5": "wdio run ./webapp/test/e2e/wdio.conf.js"
 	},
 	"devDependencies": {
+		"@sap/ux-ui5-tooling": "^1.16.5",
 		"@ui5/cli": "^4.0.6",
 		"@ui5/middleware-code-coverage": "^2.0.0",
 		"@wdio/cli": "^8.42.0",
@@ -34,7 +35,8 @@
 		"karma-coverage": "^2.2.1",
 		"karma-ui5": "^4.0.1",
 		"rimraf": "^6.0.1",
-		"ui5-middleware-livereload": "^3.0.3",
+		"ui5-middleware-livereload": "^3.1.0",
+		"ui5-middleware-simpleproxy": "^3.4.0",
 		"wdio-ui5-service": "^2.1.1"
 	}
 }

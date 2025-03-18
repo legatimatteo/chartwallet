@@ -8,6 +8,7 @@ framework:
   libraries:
     - name: sap.m
     - name: sap.ui.core
+    - name: sap.tnt
     - name: themelib_sap_horizon
 builder:
   resources:
@@ -19,3 +20,8 @@ server:
       afterMiddleware: compression
     - name: ui5-middleware-livereload
       afterMiddleware: compression
+    - name: ui5-middleware-simpleproxy
+      afterMiddleware: compression
+      mountPath: /i3s
+      configuration:
+        baseUri: http://192.168.178.128:8488

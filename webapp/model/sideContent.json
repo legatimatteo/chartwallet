@@ -1,0 +1,38 @@
+{
+	"selectedKey": "home",
+
+	"navigation": [
+		{
+			"titleI18nKey": "sideContentHome",
+			"icon": "sap-icon://home",
+			"expanded": false,
+			"key": "home",
+			"items": []
+		},
+		{
+			"titleI18nKey": "sideContentStatistics",
+			"icon": "sap-icon://line-chart",
+			"expanded": false,
+			"key": "statistics",
+			"items": [
+				{
+					"titleI18nKey": "sideContentUsageStatistics",
+					"key": "usageStatistics"
+				},
+				{
+					"titleI18nKey": "sideContentOrderStatistics",
+					"key": "orderStatistics"
+				}
+			]
+		}
+	],
+	"fixedNavigation": [
+		{
+			"titleI18nKey": "sideContentSettings",
+			"icon": "sap-icon://settings",
+			"expanded": false,
+			"key": "settings",
+			"items": []
+		}
+	]
+}
