@@ -8,9 +8,8 @@
 		formatter: 'chartwallet/model/formatter'
 	}">
 
-	<Page
-		title="{i18n>appTitle}"
-		id="page">
+	<Page showFooter="false" showHeader="false"
+		id="dashboard">
 		<content>
 			<IllustratedMessage
 				title="{i18n>appTitle}"

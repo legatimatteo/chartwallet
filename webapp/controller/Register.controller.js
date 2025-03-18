@@ -3,7 +3,7 @@ sap.ui.define(
 	function (BaseController, includeStyleSheet) {
 		"use strict";
 
-		return BaseController.extend("chartwallet.controller.Subscribe", {
+		return BaseController.extend("chartwallet.controller.Register", {
 			onInit: function () {
 				// apply content density mode to root view
 				this.getView().addStyleClass(

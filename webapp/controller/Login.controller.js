@@ -24,6 +24,7 @@ sap.ui.define(
 					// Se c'è il token lo salvo e vado alla home
 					if (oResp.token) {
 						this.getOwnerComponent()._setToken(oResp.token);
+						this.getOwnerComponent()._setUser(oResp.user);
 						console.log("Successfully logged in");
 						this.navTo("home");
 					}

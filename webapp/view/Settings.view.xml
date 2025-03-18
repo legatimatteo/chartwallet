@@ -1,0 +1,172 @@
+<mvc:View
+	controllerName="chartwallet.controller.Settings"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	
+	<Page
+		title="Impostazioni"
+		showNavButton="true"
+		navButtonPress=".onNavBack">
+		
+		<content>
+			<IconTabBar id="idIconTabBar" expandable="false" class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter icon="sap-icon://user-settings" key="general" text="Generale">
+						<f:SimpleForm
+							editable="true"
+							layout="ResponsiveGridLayout"
+							labelSpanXL="4"
+							labelSpanL="4"
+							labelSpanM="4"
+							labelSpanS="12"
+							adjustLabelSpan="false"
+							emptySpanXL="0"
+							emptySpanL="0"
+							emptySpanM="0"
+							emptySpanS="0"
+							columnsXL="1"
+							columnsL="1"
+							columnsM="1"
+							id="generalSettingsForm">
+							<f:content>
+								<Label text="Lingua" />
+								<Select id="languageSelect" selectedKey="{/settings/language}">
+									<core:Item key="it" text="Italiano" />
+									<core:Item key="en" text="Inglese" />
+									<core:Item key="de" text="Tedesco" />
+									<core:Item key="fr" text="Francese" />
+								</Select>
+								
+								<Label text="Tema" />
+								<Select id="themeSelect" selectedKey="{/settings/theme}">
+									<core:Item key="sap_horizon" text="Horizon (Chiaro)" />
+									<core:Item key="sap_horizon_dark" text="Horizon (Scuro)" />
+									<core:Item key="sap_fiori_3" text="Fiori 3" />
+									<core:Item key="sap_fiori_3_dark" text="Fiori 3 (Scuro)" />
+								</Select>
+								
+								<Label text="Notifiche" />
+								<Switch id="notificationsSwitch" state="{/settings/notifications}" customTextOn="On" customTextOff="Off" />
+								
+								<Label text="Densità" />
+								<SegmentedButton selectedKey="{/settings/density}" width="100%">
+									<items>
+										<SegmentedButtonItem key="cozy" text="Comodo" />
+										<SegmentedButtonItem key="compact" text="Compatto" />
+									</items>
+								</SegmentedButton>
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+					
+					<IconTabFilter icon="sap-icon://key-user-settings" key="advanced" text="Avanzate">
+						<f:SimpleForm
+							editable="true"
+							layout="ResponsiveGridLayout"
+							labelSpanXL="4"
+							labelSpanL="4"
+							labelSpanM="4"
+							labelSpanS="12"
+							adjustLabelSpan="false"
+							emptySpanXL="0"
+							emptySpanL="0"
+							emptySpanM="0"
+							emptySpanS="0"
+							columnsXL="1"
+							columnsL="1"
+							columnsM="1"
+							id="advancedSettingsForm">
+							<f:content>
+								<Label text="Modalità Debug" />
+								<Switch id="debugModeSwitch" state="{/settings/debugMode}" customTextOn="On" customTextOff="Off" />
+								
+								<Label text="Cache Dati" />
+								<Select id="cacheSelect" selectedKey="{/settings/cacheMode}">
+									<core:Item key="none" text="Disabilitata" />
+									<core:Item key="short" text="Breve (30 min)" />
+									<core:Item key="medium" text="Media (2 ore)" />
+									<core:Item key="long" text="Lunga (8 ore)" />
+								</Select>
+								
+								<Label text="Timeout API (sec)" />
+								<StepInput
+									id="timeoutInput"
+									value="{/settings/apiTimeout}"
+									min="5"
+									max="60"
+									step="5" />
+								
+								<Label text="Auto Aggiornamento" />
+								<Switch id="autoRefreshSwitch" state="{/settings/autoRefresh}" customTextOn="On" customTextOff="Off" />
+								
+								<Label text="Intervallo Aggiornamento (min)" visible="{= ${/settings/autoRefresh} === true }"/>
+								<StepInput
+									id="refreshIntervalInput"
+									value="{/settings/refreshInterval}"
+									min="1"
+									max="60"
+									step="1"
+									visible="{= ${/settings/autoRefresh} === true }" />
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+					
+					<IconTabFilter icon="sap-icon://account" key="profile" text="Profilo">
+						<f:SimpleForm
+							editable="true"
+							layout="ResponsiveGridLayout"
+							labelSpanXL="4"
+							labelSpanL="4"
+							labelSpanM="4"
+							labelSpanS="12"
+							adjustLabelSpan="false"
+							emptySpanXL="0"
+							emptySpanL="0"
+							emptySpanM="0"
+							emptySpanS="0"
+							columnsXL="1"
+							columnsL="1"
+							columnsM="1"
+							id="profileSettingsForm">
+							<f:content>
+								<Label text="Nome" />
+								<Input id="firstNameInput" value="{/user/firstName}" />
+								
+								<Label text="Cognome" />
+								<Input id="lastNameInput" value="{/user/lastName}" />
+								
+								<Label text="Email" />
+								<Input id="emailInput" value="{/user/email}" type="Email" />
+								
+								<Label text="Telefono" />
+								<Input id="phoneInput" value="{/user/phone}" type="Tel" />
+								
+								<Label text="Ruolo" />
+								<Text id="roleText" text="{/user/role}" />
+								
+								<Label text="Ultimo Accesso" />
+								<Text id="lastLoginText" text="{
+									path: '/user/lastLogin',
+									type: 'sap.ui.model.type.Date',
+									formatOptions: {
+										style: 'medium'
+									}
+								}" />
+							</f:content>
+						</f:SimpleForm>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+		
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer />
+				<Button text="Annulla" press=".onCancel" type="Transparent" />
+				<Button text="Salva" press=".onSave" type="Emphasized" />
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

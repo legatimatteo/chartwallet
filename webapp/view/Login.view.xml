@@ -55,7 +55,7 @@
                         alignItems="Center"
                       >
                       <Link
-                          href="#/subscribe"
+                          href="#/register"
                           text="{i18n>loginFormSubscribeLink}"
                         />
                       <Button

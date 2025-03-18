@@ -1,5 +1,5 @@
 <mvc:View
-  controllerName="chartwallet.controller.Subscribe"
+  controllerName="chartwallet.controller.Register"
   displayBlock="true"
   xmlns="sap.m"
   xmlns:l="sap.ui.layout"

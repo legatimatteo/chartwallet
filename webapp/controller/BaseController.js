@@ -78,6 +78,19 @@ sap.ui.define(
 					this.getRouter().navTo("main", {}, undefined, true);
 				}
 			},
+
+			/**
+			 * Returns a promise which resolves with the resource bundle value of the given key <code>sI18nKey</code>
+			 *
+			 * @public
+			 * @param {string} sI18nKey The key
+			 * @param {string[]} [aPlaceholderValues] The values which will repalce the placeholders in the i18n value
+			 * @returns {Promise<string>} The promise
+			 */
+			getBundleText: function(sI18nKey, aPlaceholderValues){
+				return this.getBundleTextByModel(sI18nKey, this.getOwnerComponent().getModel("i18n"), aPlaceholderValues);
+			},
+
 			/**
 			 * Returns a promises which resolves with the resource bundle value of the given key <code>sI18nKey</code>
 			 *
@@ -96,11 +109,6 @@ sap.ui.define(
 			 *  Init function
 			 * */
 			onInit: function () {
-			},
-			_checkLoggedIn: function () {
-				if (! this.getOwnerComponent().getIsLogged()) {
-					this.navTo("login");
-				}
 			},
 			hideBusyIndicator : function() {
 				BusyIndicator.hide();

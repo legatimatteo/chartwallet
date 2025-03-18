@@ -27,7 +27,7 @@
       "viewName": "chartwallet.view.App",
       "type": "XML",
       "async": true,
-      "id": "mainContents"
+      "id": "appContents"
     },
 
     "dependencies": {
@@ -64,15 +64,23 @@
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "viewPath": "chartwallet.view",
-        "controlId": "mainContents",
+        "controlId": "appContents",
         "controlAggregation": "pages",
-        "async": true
+        "async": true,
+        "bypassed": {
+          "target": ["notFound"]
+        }
       },
       "routes": [
         {
           "pattern": "",
           "name": "home",
-          "target": "main"
+          "target": ["layout", "main"]
+        },
+        {
+          "pattern": "home",
+          "name": "home",
+          "target": ["layout", "main"]
         },
         {
           "pattern": "login",
@@ -80,23 +88,55 @@
           "target": "login"
         },
         {
-          "pattern": "subscribe",
-          "name": "subscribe",
-          "target": "subscribe"
+          "pattern": "register",
+          "name": "register",
+          "target": "register"
+        },
+        {
+          "pattern": "settings",
+          "name": "settings",
+          "target": ["layout", "settings"]
         }
       ],
       "targets": {
         "main": {
           "viewId": "main",
-          "viewName": "Main"
+          "viewName": "Main",
+          "viewLevel": 2,
+          "parent": "layout",
+          "controlId": "mainContents",
+          "controlAggregation": "pages"
         },
-        "login": {
-          "viewId": "login",
-          "viewName": "Login"
+         "login": {
+          "viewName": "Login",
+          "viewLevel": 0,
+          "viewId": "login"
         },
-        "subscribe": {
-          "viewId": "subscribe",
-          "viewName": "Subscribe"
+        "register": {
+          "viewName": "Register", 
+          "viewLevel": 0,
+          "viewId": "register"
+        },
+        "layout": {
+          "viewName": "Layout",
+          "viewLevel": 1,
+          "viewId": "layout"
+        },
+        "settings": {
+          "viewName": "Settings",
+          "viewId": "settings",
+          "viewLevel": 2,
+          "parent": "layout",
+          "controlId": "mainContents",
+          "controlAggregation": "pages"
+        },
+        "notFound": {
+          "viewName": "NotFound",
+          "viewId": "notFound",
+          "transition": "show",
+          "viewLevel": 3,
+          "controlId": "appContents",
+          "controlAggregation": "pages"
         }
       }
     }

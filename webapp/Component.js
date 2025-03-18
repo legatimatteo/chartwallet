@@ -1,6 +1,6 @@
 sap.ui.define(
-	["sap/ui/core/UIComponent", "sap/ui/Device", "./model/models", "sap/ui/util/Storage"],
-	function (UIComponent, Device, models, Storage) {
+	["sap/ui/core/UIComponent", "sap/ui/Device", "./model/models", "sap/ui/util/Storage", "sap/ui/model/json/JSONModel"],
+	function (UIComponent, Device, models, Storage, JSONModel) {
 		"use strict";
 
 		return UIComponent.extend("chartwallet.Component", {
@@ -15,11 +15,12 @@ sap.ui.define(
 				this.setModel(models.createDeviceModel(), "device");
 
 				// create the views based on the url/hash
-				this.getRouter().initialize();
+				this.getRouter().initialize();						
 
 				// TODO: Manage login
 				this._isLogged = false;
 			},
+
 			/**
 			 * This method can be called to determine whether the sapUiSizeCompact or sapUiSizeCozy
 			 * design mode class should be set, which influences the size appearance of some controls.
@@ -66,6 +67,14 @@ sap.ui.define(
 						},
 					});
 				});
+			},
+			/**
+			 * Set the login status
+			 * @param {*} token 
+			 */
+			_setUser(user) {
+				const _userModel = new JSONModel(user);
+				this.setModel(_userModel, "_userModel");
 			},
 			/**
 			 * Set the login status
