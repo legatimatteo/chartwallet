@@ -21,24 +21,17 @@ sap.ui.define(
 				};
 
 				apiCall.askToLogin(oData).then((oResp) => {
-					// Da rivedere perche non funziona
-					if (oResp === "error") {
-						console.log("Wrong credentials");
-						that.getView().byId("loginEmailField").setValueState("Error");
-						that.getView().byId("loginPasswdField").setValueState("Error");
-						that.getView().byId("loginPasswdField").setValueStateText(that.getBundeText("wrongCredentials"));
-						return;
-					}
-					// Praticamente impossibile che non ci sia il token
-					if (!oResp.token) {
-						console.log("No token received");
-						return;
-					}
 					// Se c'è il token lo salvo e vado alla home
 					if (oResp.token) {
 						this.getOwnerComponent()._setToken(oResp.token);
 						console.log("Successfully logged in");
 						this.navTo("home");
+					}
+				}, (oError) => {
+					if (oError) {
+						that.getView().byId("loginEmailField").setValueState("Error");
+						that.getView().byId("loginPasswdField").setValueState("Error");
+						return;
 					}
 				});
 			},

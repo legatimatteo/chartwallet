@@ -1,12 +1,12 @@
 {
-	"selectedKey": "",
+	"selectedKey": "home",
 
 	"navigation": [
 		{
 			"titleI18nKey": "sideContentHome",
 			"icon": "sap-icon://home",
-			"expanded": true,
-			"key": "",
+			"expanded": false,
+			"key": "home",
 			"items": []
 		},
 		{
@@ -19,7 +19,7 @@
 		{
 			"titleI18nKey": "sideContentStatistics",
 			"icon": "sap-icon://line-chart",
-			"expanded": true,
+			"expanded": false,
 			"key": "statistics",
 			"items": [
 				{

@@ -32,7 +32,6 @@
                   columnsXL="12"
                   columnsL="12"
                   columnsM="12"
-                  columnsS="12"
                   singleContainerFullSize="false"
                 />
 						</f:layout>
@@ -41,12 +40,12 @@
     						<f:formElements>
    								<f:FormElement label="{i18n>loginFormEmailField}">
     									<f:fields>
-   										<Input id="loginEmailField" placeholder="example@domain.com" />
+   										<Input id="loginEmailField" placeholder="example@domain.com" submit=".onLoginPress" />
     									</f:fields>
    								</f:FormElement>
                   <f:FormElement label="{i18n>loginFormPasswdField}">
     									<f:fields>
-   										<Input id="loginPasswdField" type="Password" />
+   										<Input id="loginPasswdField" type="Password" submit=".onLoginPress" />
     									</f:fields>
    								</f:FormElement>
                   <f:FormElement>
@@ -61,7 +60,7 @@
                         />
                       <Button
                           press=".onLoginPress"
-                          type="Submit"
+                          type="Emphasized"
                           text="{i18n>loginFormLoginBtn}"
                         />
                     </HBox>
